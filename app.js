@@ -73,12 +73,14 @@ window.onload= function(){
     // });
     
     
-    
+
+document.getElementById("submit").addEventListener("click",function(e){
+    e.preventDefault();
+        
 let search= $("#ser").val();
-search= search.trim();
-var xml= new XMLHttpRequest();
-var url= "superheroes.php";
-xml.onreadystatechange= getname();
+let xml= new XMLHttpRequest();
+let url= "superheroes.php";
+xml.onreadystatechange= getname;
 xml.open("GET",url+'?query='+search);
 xml.send();
 
@@ -86,8 +88,8 @@ function getname(){
     if (xml.readyState=== XMLHttpRequest.DONE){
         if (xml.status===200){
             var response= xml.responseText;
-            alert(search.innerHTML);
-           // alert(response);
+            alert(search);
+          // alert(response);
             document.getElementById('result').innerHTML= response;
             console.log(response);
         } else {
@@ -97,10 +99,9 @@ function getname(){
     
 }
 
-document.getElementById("submit").addEventListener("mouseover",()=> {
-    getname();
 });
 
     
     
 }
+
