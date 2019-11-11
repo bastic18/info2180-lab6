@@ -62,6 +62,32 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
+?>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"]==="GET"){
+  
+  if(!empty($_GET["query"])){
+    print_r($_GET);
+    $sanitized_query = filter_var($_GET["query"], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES);
+    
+    $not_found = 0;
+        foreach($superheroes as $item => $feature){
+      if(($feature === $sanitized_query) || ($feature === $sanitized_query)){
+        echo "<h3> {$feature} </h3>";
+        echo "<h4> $feature </h4>";
+        echo "<p>$feature</p>";
+        
+      
+      } else {
+        $not_found++;
+        if($not_found === 10){
+          echo "<h6 class=\"not-found\">SUPERHERO NOT FOUND</h6>";
+        }
+
+      }
+    }
+  } else {
 
 ?>
 
@@ -70,3 +96,7 @@ $superheroes = [
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+<?php
+  }
+}
+?>
