@@ -93,7 +93,7 @@ function getname(){
             document.getElementById('result').innerHTML= response;
             console.log(response);
         } else {
-            alert ("there was a problem getting the names");
+            alert ("there was a problem getting the names. Try again ");
         }
     }
     
