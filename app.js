@@ -88,8 +88,8 @@ function getname(){
     if (xml.readyState=== XMLHttpRequest.DONE){
         if (xml.status===200){
             var response= xml.responseText;
-            alert(search);
-          // alert(response);
+         
+          
             document.getElementById('result').innerHTML= response;
             console.log(response);
         } else {
